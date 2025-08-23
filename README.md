@@ -26,8 +26,6 @@ Play locally or try it live on Render: **https://react-tic-tac-toe-b8v0.onrender
 - Draw detection
 - Clean, immutable state updates (React-friendly)
 
-> _Intentionally **no GenAI** here—this project practices core React state & logic._
-
 ---
 
 ## 🚀 Live
@@ -41,27 +39,5 @@ Play locally or try it live on Render: **https://react-tic-tac-toe-b8v0.onrender
 - **React 19** + **Vite 7**
 - **ESLint 9** (with react-hooks & react-refresh plugins)
 - Pure JavaScript (no state libs)
-
----
-
-## 🧠 How it works (quick tour)
-
-### Components
-
-- **`App.jsx`** – the referee. Holds state: `boardGame`, `activePlayer`, `log`, derived `winner` & `isDraw`.  
-- **`components/Gameboard.jsx`** – renders the 3×3 grid; calls `onSelectSquare(r,c)` when a legal move is clicked.  
-- **`components/Player.jsx`** – name badge with inline edit (Edit/Save) and “active” highlight.  
-- **`components/Log.jsx`** – shows move history (player, row, column).  
-- **`components/GameOver.jsx`** – appears on win/draw with a **Rematch** button.  
-- **`utils/checkWinner.js`** – returns `"X"`, `"O"`, or `null` from the current board.
-
-### Game flow (1 move = 3 steps)
-
-1. Player clicks a cell → `Gameboard` calls `onSelectSquare(row,col)`.  
-2. `App` verifies the cell is empty & game isn’t over, then:
-   - Updates the board **immutably** (makes a copy, sets the cell).
-   - Logs the move.
-   - Toggles `activePlayer`.
-3. Derived state recomputes `winner` / `isDraw`, UI reacts.
 
 ---
