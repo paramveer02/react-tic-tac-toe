@@ -1,7 +1,7 @@
 import Player from "./components/Player";
 import Gameboard from "./components/Gameboard";
 import Log from "./components/Log";
-import Gameover from "./components/Gameover";
+import GameOver from "./components/GameOver";
 import { useState } from "react";
 import { initialBoardGame } from "./utils/gameData";
 import { checkWinner } from "./utils/checkWinner";
@@ -90,7 +90,7 @@ function App() {
       </div>
       <Log turns={log} />
       {(winner || isDraw) && (
-        <Gameover
+        <GameOver
           winner={isDraw ? "Draw" : winner}
           onRestart={handleRestart}
           players={playerNames}
