@@ -30,7 +30,7 @@ const Gameboard = ({
             {row.map((cell, colIndex) => (
               <li key={colIndex}>
                 <button
-                  onClick={handleSelectSquare(rowIndex, colIndex)}
+                  onClick={() => handleSelectSquare(rowIndex, colIndex)}
                   disabled={cell !== null || winner}
                 >
                   {cell}
