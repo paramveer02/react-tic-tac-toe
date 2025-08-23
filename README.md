@@ -44,20 +44,6 @@ Play locally or try it live on Render: **https://react-tic-tac-toe-b8v0.onrender
 
 ---
 
-## 🖼️ Preview
-
-> Add a screenshot or short GIF here:
->
-> ```
-> /public/preview.png
-> ```
-> 
-> ```md
-> ![Preview](public/preview.png)
-> ```
-
----
-
 ## 🧠 How it works (quick tour)
 
 ### Components
@@ -79,25 +65,3 @@ Play locally or try it live on Render: **https://react-tic-tac-toe-b8v0.onrender
 3. Derived state recomputes `winner` / `isDraw`, UI reacts.
 
 ---
-
-## 🧪 Winner logic (simplified)
-
-```js
-// utils/checkWinner.js
-export function checkWinner(board) {
-  // rows & cols
-  for (let i = 0; i < 3; i++) {
-    // row
-    if (board[i][0] && board[i][0] === board[i][1] && board[i][0] === board[i][2]) {
-      return board[i][0];
-    }
-    // col
-    if (board[0][i] && board[0][i] === board[1][i] && board[0][i] === board[2][i]) {
-      return board[0][i];
-    }
-  }
-  // diagonals
-  if (board[0][0] && board[0][0] === board[1][1] && board[0][0] === board[2][2]) return board[0][0];
-  if (board[0][2] && board[0][2] === board[1][1] && board[0][2] === board[2][0]) return board[0][2];
-  return null;
-}
