@@ -40,7 +40,8 @@ body {
 
 header {
   text-align: center;
-  padding: 0 max(env(safe-area-inset-left), 1rem) 0 max(env(safe-area-inset-right), 1rem);
+  padding-left: max(env(safe-area-inset-left), 1rem);
+  padding-right: max(env(safe-area-inset-right), 1rem);
 }
 
 header img {
