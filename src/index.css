@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+/* Remove tap highlight on mobile */
+button,
+input,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 html {
   font-family: "Roboto Slab", sans-serif;
   line-height: 1.5;
@@ -13,6 +20,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -25,30 +33,35 @@ body {
   min-height: 100svh;
   background-repeat: no-repeat, repeat; /* gradient, pattern */
   background-size: 100% 100%, 30% 30%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 header {
   text-align: center;
+  padding: 0 max(env(safe-area-inset-left), 1rem) 0 max(env(safe-area-inset-right), 1rem);
 }
 
 header img {
-  width: 8rem;
+  width: clamp(5rem, 15vw, 8rem);
   object-fit: contain;
-  margin: 3rem auto 1rem auto;
+  margin: clamp(1.5rem, 3vh, 3rem) auto clamp(0.5rem, 2vh, 1rem) auto;
   filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
 }
 
 h1 {
   font-family: "Caprasimo", cursive;
-  font-size: clamp(1.6rem, 4vw, 3rem);
-  margin: 0 auto 3rem auto;
+  font-size: clamp(1.6rem, 5vw, 3rem);
+  margin: 0 auto clamp(1rem, 3vh, 3rem) auto;
   color: #3f3b00;
 }
 
 #game-container {
-  width: min(92vw, 50rem);
-  margin: clamp(1rem, 4vh, 3rem) auto;
-  padding: clamp(1rem, 2.2vw, 2rem);
+  width: calc(100% - 2rem);
+  max-width: 50rem;
+  margin: clamp(0.5rem, 2vh, 3rem) auto;
+  padding: clamp(0.75rem, 2.5vw, 2rem);
   border-radius: 6px;
   background: linear-gradient(#383624, #282617);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -71,8 +84,8 @@ h1 {
   align-items: center;
   border: 2px solid transparent;
   width: auto;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  gap: clamp(0.5rem, 2vw, 0.75rem);
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.5rem, 2vw, 1rem);
 }
 
 #players.highlight-player li.active {
@@ -107,8 +120,8 @@ h1 {
 }
 .player-name {
   display: inline-block;
-  width: 10rem;
-  font-size: 1rem;
+  width: clamp(7rem, 25vw, 10rem);
+  font-size: clamp(0.85rem, 3vw, 1rem);
   color: #e1dec7;
   text-transform: uppercase;
   margin: 0;
@@ -119,8 +132,8 @@ h1 {
 }
 .player input {
   font: inherit;
-  font-size: 1rem;
-  width: 10rem;
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  width: clamp(7rem, 25vw, 10rem);
   border: none;
   padding: 0.5rem;
   animation: pulse-text 2s infinite;
@@ -129,8 +142,9 @@ h1 {
   text-transform: uppercase;
 }
 .player-symbol {
-  margin-left: 1rem;
-  font-size: 1rem;
+  margin-left: clamp(0.5rem, 2vw, 1rem);
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-weight: bold;
   color: #e1dec7;
 }
 
@@ -159,10 +173,10 @@ ol {
 #game-board {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* single unified 3×3 grid */
-  gap: 1rem;
+  gap: clamp(0.5rem, 2vw, 1rem);
   width: 100%;
   max-width: 32rem;
-  margin: 3rem auto;
+  margin: clamp(1.5rem, 4vh, 3rem) auto;
   padding: 0;
 }
 
@@ -180,9 +194,10 @@ ol {
   color: #3f3b00;
   cursor: pointer;
   font-family: "Caprasimo", cursive;
-  font-size: clamp(1.6rem, 6vw, 3rem); /* X/O scales with screen */
-  border-radius: 12px;
+  font-size: clamp(2rem, 8vw, 3rem); /* X/O scales with screen */
+  border-radius: clamp(6px, 2vw, 12px);
   padding: 0; /* let the square fill cleanly */
+  transition: background 0.2s;
 }
 
 /* Game Over overlay */
@@ -198,24 +213,27 @@ ol {
 }
 #game-over h2 {
   font-family: "Caprasimo", cursive;
-  font-size: 4rem;
+  font-size: clamp(2rem, 10vw, 4rem);
   text-align: center;
   color: #fcd256;
   margin: 0;
+  padding: 0 1rem;
 }
 #game-over p {
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 5vw, 2rem);
   text-align: center;
   color: #e1dec7;
+  padding: 0 1rem;
+  margin: 1rem 0;
 }
 #game-over button {
   display: block;
   margin: 0 auto;
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
   background: none;
   border: 2px solid #fcd256;
   color: #fcd256;
-  padding: 0.5rem 1rem;
+  padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 4vw, 1.5rem);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s, color 0.2s;
@@ -230,17 +248,19 @@ ol {
 
 /* Log */
 #log {
-  width: min(92vw, 22rem);
+  width: calc(100% - 2rem);
+  max-width: 22rem;
   color: #3f3b00;
   list-style: none;
-  margin: 2rem auto;
-  padding: 0;
+  margin: clamp(1rem, 3vh, 2rem) auto;
+  padding: 0 1rem;
   text-align: center;
 }
 #log li {
   border-radius: 4px;
   animation: slide-in-from-left 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   margin: 0.75rem;
+  font-size: clamp(0.9rem, 3.5vw, 1rem);
 }
 #log li.highlighted {
   background-color: #3f3b00;
